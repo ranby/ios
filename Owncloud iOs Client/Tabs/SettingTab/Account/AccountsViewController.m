@@ -68,6 +68,7 @@
     self.edgesForExtendedLayout = UIRectCornerAllCorners;
     
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
 }
 
 - (void)viewDidUnload
@@ -281,6 +282,10 @@
         }else {
             [cell.activeButton setImage:[UIImage imageNamed:@"radio_unchecked.png"] forState:UIControlStateNormal];
         }
+        
+        //Accesibility support for Automation
+        NSString *accessibilityString = [NSString stringWithFormat:@"%@@%@", cell.userName.text, cell.urlServer.text];
+        [cell setAccessibilityLabel:accessibilityString];
         
     }else if (indexPath.section==1) {
         
