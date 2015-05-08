@@ -90,7 +90,7 @@ describe("Owncloud.Login", function() {
 	var userAccount3 = "owncloudUser3Var";
 	//pasword wirh special characters 
 	var passwordAccount3 = "owncloudPassword3Var"; 
-
+	
 	var idCellAccount3 = userAccount3 +", "+ serverAccount3+"/";
 
 
@@ -125,7 +125,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -212,7 +212,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -304,7 +304,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -403,7 +403,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -502,7 +502,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -604,7 +604,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -664,7 +664,7 @@ describe("Owncloud.Login", function() {
 
 			//It waits x seconds or until the connections is established, to continue the test.
 			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Secure Connection Established"];
+			tableViewContainer.groups()["Connection Established"];
 			target.popTimeout();
 
 			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
@@ -783,7 +783,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -840,7 +840,7 @@ describe("Owncloud.Login", function() {
 
 			//It waits x seconds or until the connections is established, to continue the test.
 			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Secure Connection Established"];
+			tableViewContainer.groups()["Connection Established"];
 			target.popTimeout();
 
 			tableViewContainer.cells()[1].textFields()[0].tap();
@@ -940,7 +940,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1000,7 +1000,7 @@ describe("Owncloud.Login", function() {
 
 			//It waits x seconds or until the connections is established, to continue the test.
 			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Secure Connection Established"];
+			tableViewContainer.groups()["Connection Established"];
 			target.popTimeout();
 
 			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
@@ -1208,7 +1208,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1270,7 +1270,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1336,7 +1336,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1401,7 +1401,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1468,7 +1468,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1536,7 +1536,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1617,7 +1617,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1674,7 +1674,7 @@ describe("Owncloud.Login", function() {
 
 			//It waits x seconds or until the connections is established, to continue the test.
 			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Secure Connection Established"];
+			tableViewContainer.groups()["Connection Established"];
 			target.popTimeout();
 
 			tableViewContainer.cells()[1].textFields()[0].tap();
@@ -1764,7 +1764,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1822,7 +1822,7 @@ describe("Owncloud.Login", function() {
 
 			//It waits x seconds or until the connections is established, to continue the test.
 			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Secure Connection Established"];
+			tableViewContainer.groups()["Connection Established"];
 			target.popTimeout();
 
 			tableViewContainer.cells()[1].textFields()[0].tap();
@@ -1913,7 +1913,7 @@ describe("Owncloud.Login", function() {
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Secure Connection Established"];
+		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
 		target.popTimeout();
 
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
@@ -1970,7 +1970,7 @@ describe("Owncloud.Login", function() {
 
 			//It waits x seconds or until the connections is established, to continue the test.
 			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Secure Connection Established"];
+			tableViewContainer.groups()["Connection Established"];
 			target.popTimeout();
 
 			tableViewContainer.cells()[1].textFields()[0].tap();
