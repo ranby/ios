@@ -423,11 +423,6 @@ NSString * NotReachableNetworkForDownloadsNotification = @"NotReachableNetworkFo
         _loginWindowViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController_iPad" bundle:[NSBundle mainBundle]];
     }
     
-    //[self presentModalViewController:_loginWindowViewController animated:NO];
-    
-  
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.window.rootViewController = self.loginWindowViewController;
@@ -568,6 +563,8 @@ NSString * NotReachableNetworkForDownloadsNotification = @"NotReachableNetworkFo
         
         //Create a splitViewController (Split container to show two view in the same time)
         self.splitViewController = [OCSplitViewController new];
+        
+        self.splitViewController.view.backgroundColor = [UIColor blackColor];
         
         //Create the detailViewController (Detail View of the split)
         self.detailViewController = [[DetailViewController alloc]initWithNibName:@"DetailView" bundle:nil];
