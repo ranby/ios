@@ -29,6 +29,18 @@ describe("Owncloud.Login", function() {
 
 	}
 
+	logout =function(obj){
+		//Here we detect if it the display has a popover or not
+		container = getContainer();
+
+		container.tabBar().buttons()["Settings"].tap();
+					
+		target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].dragInsideWithOptions({startOffset:{x:0.73, y:0.20}, endOffset:{x:0, y:0.20}, duration:0.25});
+			
+		container.tableViews()[0].cells()[obj].buttons()["Delete"].tap();
+		target.delay(1);
+	}
+
 	//A convenience method for detecting that you're running on an iPad
 	isDeviceiPad = function(obj) {
 		return obj.model().match(/^iPad/) !== null;
@@ -76,14 +88,14 @@ describe("Owncloud.Login", function() {
 	var userAccount1 = "owncloudUserVar"; 
 	var passwordAccount1 = "owncloudPasswordVar"; 
 
-	var idCellAccount1 = userAccount1 +", "+ serverAccount1+"/";
+	var idCellAccount1 = "Settings Account Cell "+userAccount1 +"@"+ serverAccount1;
 
 	//account2
 	var serverAccount2 = "owncloudServer2Var"; 
 	var userAccount2 = "owncloudUser2Var"; 
 	var passwordAccount2 = "owncloudPasswordVar"; 
 
-	var idCellAccount2 = userAccount2 +", "+ serverAccount2+"/";
+	var idCellAccount2 = "Settings Account Cell "+userAccount2 +"@"+ serverAccount2;
 
 	//account1
 	var serverAccount3 = "owncloudServer3Var"; 
@@ -91,7 +103,7 @@ describe("Owncloud.Login", function() {
 	//pasword wirh special characters 
 	var passwordAccount3 = "owncloudPassword3Var"; 
 	
-	var idCellAccount3 = userAccount3 +", "+ serverAccount3+"/";
+	var idCellAccount3 = "Settings Account Cell "+userAccount3 +"@"+ serverAccount3;
 
 
 	var incorrectServerAccount = "https://incorrect.owncloud.com/owncloud";
@@ -161,30 +173,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid() || target.frontMostApp().mainWindow().popover().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			//Here we detect if it the display has a popover or not (in this case, is ipad or not)
-			container = getContainer();
-
-			container.tabBar().buttons()["Settings"].tap();
-			container .tableViews()[0].cells()["Manage Accounts"].tap();
-			
-			if(isDeviceiPad(target) && target.deviceOrientation()== UIA_DEVICE_ORIENTATION_PORTRAIT){
-				target.frontMostApp().mainWindow().popover().navigationBar().rightButton().tap();
-			}else{
-				target.frontMostApp().navigationBar().rightButton().tap();
-			}		
-			container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-			//container .tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.0, y:0.2}, duration:0.25});
-			
-			if(isIos6(target)){
-				//With ios6, intruments doesn't find delete button so it has to be implement like that
-				//container.tableViews()[0].cells()[idCellAccount1].buttons()["More info, "+ idCellAccount1].tap();
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Confirm Deletion for "+ idCellAccount1].tap();
-			}else{
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-			}
-			
-			
-			target.delay(1);
+			logout(idCellAccount1);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -249,30 +238,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid() || target.frontMostApp().mainWindow().popover().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			//Here we detect if it the display has a popover or not (in this case, is ipad or not)
-			container = getContainer();
-
-			container.tabBar().buttons()["Settings"].tap();
-			container .tableViews()[0].cells()["Manage Accounts"].tap();
-			
-			if(isDeviceiPad(target) && target.deviceOrientation()== UIA_DEVICE_ORIENTATION_PORTRAIT){
-				target.frontMostApp().mainWindow().popover().navigationBar().rightButton().tap();
-			}else{
-				target.frontMostApp().navigationBar().rightButton().tap();
-			}		
-			container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-			//container .tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.2, y:0.2}, duration:0.25});
-			
-			if(isIos6(target)){
-				//With ios6, intruments doesn't find delete button so it has to be implement like that
-				//container.tableViews()[0].cells()[idCellAccount1].buttons()["More info, "+ idCellAccount1].tap();
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Confirm Deletion for "+ idCellAccount1].tap();
-			}else{
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-			}
-			
-			
-			target.delay(1);
+			logout(idCellAccount1);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -351,29 +317,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid() || target.frontMostApp().mainWindow().popover().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			//Here we detect if it the display has a popover or not
-			container = getContainer();
-			
-			container.tabBar().buttons()["Settings"].tap();
-			container .tableViews()[0].cells()["Manage Accounts"].tap();
-			
-			if(isDeviceiPad(target) && target.deviceOrientation()== UIA_DEVICE_ORIENTATION_PORTRAIT){
-				target.frontMostApp().mainWindow().popover().navigationBar().rightButton().tap();
-			}else{
-				target.frontMostApp().navigationBar().rightButton().tap();
-			}		
-			container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-			//container .tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.2, y:0.2}, duration:0.25});
-			if(isIos6(target)){
-				//With ios6, intruments doesn't find delete button so it has to be implement like that
-				//container.tableViews()[0].cells()[idCellAccount1].buttons()["More info, "+ idCellAccount1].tap();
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Confirm Deletion for "+ idCellAccount1].tap();
-			}else{
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-			}
-			
-			
-			target.delay(1);
+			logout(idCellAccount1);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -450,30 +394,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid() || target.frontMostApp().mainWindow().popover().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			//Here we detect if it the display has a popover or not
-			container = getContainer();
-
-			container.tabBar().buttons()["Settings"].tap();
-			container .tableViews()[0].cells()["Manage Accounts"].tap();
-			
-			if(isDeviceiPad(target) && target.deviceOrientation()== UIA_DEVICE_ORIENTATION_PORTRAIT){
-				target.frontMostApp().mainWindow().popover().navigationBar().rightButton().tap();
-			}else{
-				target.frontMostApp().navigationBar().rightButton().tap();
-			}		
-			container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-			//container .tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.0, y:0.2}, duration:0.25});
-			
-			if(isIos6(target)){
-				//With ios6, intruments doesn't find delete button so it has to be implement like that
-				//container.tableViews()[0].cells()[idCellAccount1].buttons()["More info, "+ idCellAccount1].tap();
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Confirm Deletion for "+ idCellAccount1].tap();
-			}else{
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-			}
-			
-			
-			target.delay(1);
+			logout(idCellAccount1);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -550,30 +471,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid() || target.frontMostApp().mainWindow().popover().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			//Here we detect if it the display has a popover or not
-			container = getContainer();
-
-			container.tabBar().buttons()["Settings"].tap();
-			container .tableViews()[0].cells()["Manage Accounts"].tap();
-			
-			if(isDeviceiPad(target) && target.deviceOrientation()== UIA_DEVICE_ORIENTATION_PORTRAIT){
-				target.frontMostApp().mainWindow().popover().navigationBar().rightButton().tap();
-			}else{
-				target.frontMostApp().navigationBar().rightButton().tap();
-			}		
-			container.tableViews()[0].cells()[idCellAccount3].switches()["Delete "+idCellAccount3].setValue(true);
-			//container .tableViews()[0].cells()[idCellAccount3].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.0, y:0.2}, duration:0.25});
-			
-			if(isIos6(target)){
-				//With ios6, intruments doesn't find delete button so it has to be implement like that
-				//container.tableViews()[0].cells()[idCellAccount3].buttons()["More info, "+ idCellAccount3].tap();
-				container.tableViews()[0].cells()[idCellAccount3].buttons()["Confirm Deletion for "+ idCellAccount3].tap();
-			}else{
-				container.tableViews()[0].cells()[idCellAccount3].buttons()["Delete"].tap();
-			}
-			
-			
-			target.delay(1);
+			logout(idCellAccount3);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
