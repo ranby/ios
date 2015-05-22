@@ -17,6 +17,7 @@ describe("Owncloud.Login", function() {
 
 	}
 
+
 	logout = function(obj){
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].dragInsideWithOptions({startOffset:{x:0.7, y:0.25}, endOffset:{x:0, y:0.25}, duration:0.25});
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].buttons()["Delete"].tap();
@@ -27,6 +28,70 @@ describe("Owncloud.Login", function() {
 		logout(obj);
 		target.delay(1);
 	}
+
+	//insert value in a file
+	insertValue = function(element, value){
+		element.tap();
+		element.setValue("");
+		target.delay(1);
+		element.setValue(value);
+		target.frontMostApp().keyboard().typeString("\n");
+
+	}
+
+
+	tapOnButton = function(element){
+		//scroll up, to see the button if necessary
+		if(!element.isVisible()){
+			element.scrollToVisible();
+		}
+
+		element.tap();
+	}
+
+	login = function(container,server,user,password,button){
+		insertValue(container.cells()[0].textFields()[0], server);
+
+		//It waits x seconds or until the connections is established, to continue the test.
+		waitUntilMessageIsShown(container.groups()["Connection Established"]);
+		//target.pushTimeout(timeToPushTimeOut);
+		//target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
+		//target.popTimeout();
+
+		insertValue(container.cells()[1].textFields()[0], user);
+		insertValue(container.cells()[2].textFields()[0], password);
+
+		target.delay(1);
+
+		tapOnButton(container.cells()[button]);
+
+	}
+
+	waitUntilMessageIsShown = function(elem){
+		target.pushTimeout(timeToPushTimeOut);
+		elem;
+		target.popTimeout();
+	}
+
+	waitUntilMessageIsVisible = function(elem){
+		target.pushTimeout(timeToPushTimeOut);
+		elem.withValueForKey(1,"isVisible");
+		target.popTimeout();
+	}
+
+	waitUntilMessageIsNotVisible = function(elem){
+		target.pushTimeout(timeToPushTimeOut);
+		elem.withValueForKey(0,"isVisible");
+		target.popTimeout();
+	}
+
+	waitUntilMessageIsGone = function(elem){
+		//It waits x seconds or until the loading disappear, to continue the test. 
+		target.pushTimeout(timeToPushTimeOut);
+		elem.waitForInvalid() == true;
+		target.popTimeout();
+	}
+
 
 	//A convenience method for detecting that you're running on an iPad
 	isDeviceiPad = function(obj) {
@@ -90,7 +155,7 @@ describe("Owncloud.Login", function() {
 
 
 	var incorrectServerAccount = "https://incorrect.owncloud.com/owncloud";
-	var incorrectpasswordAccount = "Incorrect password";  
+	var incorrectpasswordAccount = "Incorrect password"; 
 
 
 
@@ -112,43 +177,10 @@ describe("Owncloud.Login", function() {
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 		target.delay(1);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -176,44 +208,10 @@ describe("Owncloud.Login", function() {
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 		target.delay(1);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
-
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -243,56 +241,14 @@ describe("Owncloud.Login", function() {
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 		target.delay(1);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-
-		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		//Select to login
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
-
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
-
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -322,31 +278,16 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 
 		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], serverAccount1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 
 		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
+		waitUntilMessageIsShown(target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"]);
 
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0], userAccount1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].textFields()[0], passwordAccount1);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 		target.delay(1);
@@ -356,20 +297,12 @@ describe("Owncloud.Login", function() {
 
 		target.delay(1);
 
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		//Select to login
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		tapOnButton(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"]);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -397,32 +330,17 @@ describe("Owncloud.Login", function() {
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 		target.delay(1);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount3);
-		target.frontMostApp().keyboard().typeString("\n");
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], serverAccount3);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 
 		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
+		waitUntilMessageIsShown(target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"]);
 
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount3);
-		target.frontMostApp().keyboard().typeString("\n");
-
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0], userAccount3);
+		
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount3);
-		target.frontMostApp().keyboard().typeString("\n");
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].textFields()[0], passwordAccount3);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 		target.delay(1);
@@ -431,20 +349,12 @@ describe("Owncloud.Login", function() {
 
 		target.delay(1);
 
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		//Select to login
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		tapOnButton(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"]);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		UIALogger.logMessage("Detect if the files screen is shown");
 
@@ -477,43 +387,10 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -521,11 +398,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid()){
 		//if it's possible to login with the first account, the test keep on running
 			
-			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 			container = target.frontMostApp().mainWindow();
-
-			//This is necessary after several rotation
-			//container.tableViews()[0].tapWithOptions({tapOffset:{x:0.52, y:0.22}});
 
 			//select to add a new account
 			container.tabBar().buttons()["Settings"].tap();
@@ -535,47 +408,11 @@ describe("Owncloud.Login", function() {
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
 
-			//log in with the other account
-			tableViewContainer.cells()[0].textFields()[0].tap();
-			tableViewContainer.cells()[0].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[0].textFields()[0].setValue(serverAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
 
-			//It waits x seconds or until the connections is established, to continue the test.
-			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Connection Established"];
-			target.popTimeout();
-
-			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-			
-			container = target.frontMostApp().mainWindow();
-			//get the correct tableview, it depends on the device and the orientation
-			tableViewContainer = getTableViewContainer(target);
-
-			tableViewContainer.cells()[1].textFields()[0].tap();
-			tableViewContainer.cells()[1].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[1].textFields()[0].setValue(userAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			tableViewContainer.cells()[2].secureTextFields()[0].tap();
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue(passwordAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			//scroll up, to see the button if necessary
-			if(!tableViewContainer.cells()[3].isVisible()){
-				tableViewContainer.cells()[3].scrollToVisible();
-			}
-
-			tableViewContainer.cells()[3].tap();
+			login(tableViewContainer,serverAccount2,userAccount2,passwordAccount2,3);
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			target.pushTimeout(timeToPushTimeOut);
-			target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-			target.popTimeout();
+			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 			////CHECK USING JASMINE METHOD
 			expect(container.tableViews()[0].cells()[idCellAccount1].isValid() && container.tableViews()[0].cells()[idCellAccount2].isValid()).toBeTruthy();
@@ -617,43 +454,11 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -673,42 +478,10 @@ describe("Owncloud.Login", function() {
 
 			tableViewContainer = getTableViewContainer(target);
 
-			//log in with the other account
-			tableViewContainer.cells()[0].textFields()[0].tap();
-			tableViewContainer.cells()[0].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[0].textFields()[0].setValue(serverAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			//It waits x seconds or until the connections is established, to continue the test.
-			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Connection Established"];
-			target.popTimeout();
-
-			tableViewContainer.cells()[1].textFields()[0].tap();
-			tableViewContainer.cells()[1].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[1].textFields()[0].setValue(userAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			tableViewContainer.cells()[2].secureTextFields()[0].tap();
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue(passwordAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			//scroll up, to see the button if necessary
-			if(!tableViewContainer.cells()[3].isVisible()){
-				tableViewContainer.cells()[3].scrollToVisible();
-			}
-
-			tableViewContainer.cells()[3].tap();
+			login(tableViewContainer,serverAccount2,userAccount2,passwordAccount2,3);
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			target.pushTimeout(timeToPushTimeOut);
-			target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-			target.popTimeout();
-
+			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 			////CHECK USING JASMINE METHOD
 			expect(container.tableViews()[0].cells()[idCellAccount1].isValid() && container.tableViews()[0].cells()[idCellAccount2].isValid()).toBeTruthy();
@@ -749,43 +522,10 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -809,47 +549,24 @@ describe("Owncloud.Login", function() {
 			tableViewContainer = getTableViewContainer(target);
 
 			//log in with the other account
-			tableViewContainer.cells()[0].textFields()[0].tap();
-			tableViewContainer.cells()[0].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[0].textFields()[0].setValue(serverAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
+			insertValue(tableViewContainer.cells()[0].textFields()[0],serverAccount2);
 
 			//It waits x seconds or until the connections is established, to continue the test.
-			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Connection Established"];
-			target.popTimeout();
+			waitUntilMessageIsShown(container.groups()["Connection Established"]);
 
 			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 			
-			container = target.frontMostApp().mainWindow();
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
 
+			insertValue(tableViewContainer.cells()[1].textFields()[0],userAccount2);
 
-			tableViewContainer.cells()[1].textFields()[0].tap();
-			tableViewContainer.cells()[1].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[1].textFields()[0].setValue(userAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
+			insertValue(tableViewContainer.cells()[2].textFields()[0],passwordAccount2);
 
-			tableViewContainer.cells()[2].secureTextFields()[0].tap();
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue(passwordAccount2);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			//scroll up, to see the button if necessary
-			if(!tableViewContainer.cells()[3].isVisible()){
-				tableViewContainer.cells()[3].scrollToVisible();
-			}
-
-			tableViewContainer.cells()[3].tap();
+			tapOnButton(tableViewContainer.cells()[3]);
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			target.pushTimeout(timeToPushTimeOut);
-			target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-			target.popTimeout();
+			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 
 			////CHECK USING JASMINE METHOD
@@ -889,19 +606,11 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		//log in with account1, the incorrect server
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(incorrectServerAccount);
-		target.frontMostApp().keyboard().typeString("\n");
+		//log in with the incorrect server
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], incorrectServerAccount);
 
 		//It waits x seconds or until the connection test is finished, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		//target.frontMostApp().mainWindow().tableViews()[0].groups()["Testing Connection"].withValueForKey(0,"isVisible");
-		//target.frontMostApp().mainWindow().tableViews()[0].groups()["In progress"].withValueForKey(0,"isVisible");
-		target.frontMostApp().mainWindow().tableViews()["Empty list"].groups()["Server not found"].withValueForKey(1,"isVisible");
-		target.popTimeout();
+		waitUntilMessageIsVisible(target.frontMostApp().mainWindow().tableViews()["Empty list"].groups()["Server not found"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().mainWindow().tableViews()[0].groups()["Server not found"].isValid()).toBeTruthy();
@@ -931,21 +640,12 @@ describe("Owncloud.Login", function() {
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 
 
-		//log in with account1, the incorrect server
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(incorrectServerAccount);
-		target.frontMostApp().keyboard().typeString("\n");
+		//log in with the incorrect server
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], incorrectServerAccount);
 
 
 		//It waits x seconds or until the connection test is finished, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		//target.frontMostApp().mainWindow().tableViews()[0].groups()["Testing Connection"].withValueForKey(0,"isVisible");
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["In progress"].withValueForKey(0,"isVisible");
-		//target.frontMostApp().mainWindow().tableViews()[0].groups()["Server not found"].withValueForKey(1,"isVisible");
-		target.popTimeout();
-
+		waitUntilMessageIsNotVisible(target.frontMostApp().mainWindow().tableViews()[0].groups()["In progress"]);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 		target.delay(1);
@@ -982,38 +682,8 @@ describe("Owncloud.Login", function() {
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 		target.delay(1);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,"","Log in");
 
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
 
 		////CHECK USING JASMINE METHOD
 		expect(!(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isEnabled())).toBeTruthy();
@@ -1044,38 +714,7 @@ describe("Owncloud.Login", function() {
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 		target.delay(1);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,"","Log in");
 
 		////CHECK USING JASMINE METHOD
 		expect(!(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isEnabled())).toBeTruthy();
@@ -1109,41 +748,22 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 
 		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], serverAccount1);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 
 		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
+		waitUntilMessageIsShown(target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"]);
 
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0], userAccount1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().keyboard().typeString("\n");
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].textFields()[0], "");
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 
 		target.delay(1);
 
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		tapOnButton(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(!(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isEnabled())).toBeTruthy();
@@ -1175,42 +795,11 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(incorrectpasswordAccount);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,incorrectpasswordAccount,"","Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().mainWindow().tableViews()[0].groups()["The user or password is incorrect"].isValid()).toBeTruthy();
@@ -1242,43 +831,10 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(incorrectpasswordAccount);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,incorrectpasswordAccount,"","Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().mainWindow().tableViews()[0].groups()["The user or password is incorrect"].isValid()).toBeTruthy();
@@ -1310,43 +866,10 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(incorrectpasswordAccount);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,incorrectpasswordAccount,"","Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
@@ -1391,43 +914,10 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -1447,43 +937,11 @@ describe("Owncloud.Login", function() {
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
 
-			//log in with the other account
-			tableViewContainer.cells()[0].textFields()[0].tap();
-			tableViewContainer.cells()[0].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[0].textFields()[0].setValue(serverAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			//It waits x seconds or until the connections is established, to continue the test.
-			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Connection Established"];
-			target.popTimeout();
-
-			tableViewContainer.cells()[1].textFields()[0].tap();
-			tableViewContainer.cells()[1].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[1].textFields()[0].setValue(userAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			tableViewContainer.cells()[2].secureTextFields()[0].tap();
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			target.delay(1);
-			
-			//scroll up, to see the button if necessary
-			if(!tableViewContainer.cells()[3].isVisible()){
-				tableViewContainer.cells()[3].scrollToVisible();
-			}
-
-			tableViewContainer.cells()[3].tap();
+			//log in with the same account
+			login(tableViewContainer,serverAccount1,userAccount1,passwordAccount1,3);
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			target.pushTimeout(timeToPushTimeOut);
-			target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-			target.popTimeout();
+			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 			////CHECK USING JASMINE METHOD
 			expect(target.frontMostApp().alert().name()).toEqual("The entered user already exists");
@@ -1521,43 +979,10 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -1578,43 +1003,11 @@ describe("Owncloud.Login", function() {
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
 
-			//log in with the other account
-			tableViewContainer.cells()[0].textFields()[0].tap();
-			tableViewContainer.cells()[0].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[0].textFields()[0].setValue(serverAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			//It waits x seconds or until the connections is established, to continue the test.
-			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Connection Established"];
-			target.popTimeout();
-
-			tableViewContainer.cells()[1].textFields()[0].tap();
-			tableViewContainer.cells()[1].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[1].textFields()[0].setValue(userAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			tableViewContainer.cells()[2].secureTextFields()[0].tap();
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
-			
-			target.delay(1);
-			
-			//scroll up, to see the button if necessary
-			if(!tableViewContainer.cells()[3].isVisible()){
-				tableViewContainer.cells()[3].scrollToVisible();
-			}
-
-			tableViewContainer.cells()[3].tap();
+			//log in with the same account
+			login(tableViewContainer,serverAccount1,userAccount1,passwordAccount1,3);
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			target.pushTimeout(timeToPushTimeOut);
-			target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-			target.popTimeout();
+			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 
 			////CHECK USING JASMINE METHOD
@@ -1652,43 +1045,11 @@ describe("Owncloud.Login", function() {
 		target.delay(1);
 
 
-		//log in with account1
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue(serverAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
-		//It waits x seconds or until the connections is established, to continue the test.
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"];
-		target.popTimeout();
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue(userAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].tap();
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
-		target.delay(1);
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-		target.frontMostApp().keyboard().typeString("\n");
-
-		target.delay(1);
-
-		//scroll up, to see the button if necessary
-		if(!target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isVisible()){
-			target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].scrollToVisible();
-		}
-
-		target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].tap();
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
-		target.pushTimeout(timeToPushTimeOut);
-		target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-		target.popTimeout();
+		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().navigationBar().isValid()).toBeTruthy();
@@ -1708,52 +1069,28 @@ describe("Owncloud.Login", function() {
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
 
-			//log in with the other account
-			tableViewContainer.cells()[0].textFields()[0].tap();
-			tableViewContainer.cells()[0].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[0].textFields()[0].setValue(serverAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
+			//log in with the same account
+			insertValue(tableViewContainer.cells()[0].textFields()[0],serverAccount1);
 
 			//It waits x seconds or until the connections is established, to continue the test.
-			target.pushTimeout(timeToPushTimeOut);
-			tableViewContainer.groups()["Connection Established"];
-			target.popTimeout();
+			waitUntilMessageIsShown(container.groups()["Connection Established"]);
 
-			tableViewContainer.cells()[1].textFields()[0].tap();
-			tableViewContainer.cells()[1].textFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[1].textFields()[0].setValue(userAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
-
-			tableViewContainer.cells()[2].secureTextFields()[0].tap();
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue("");
-			target.delay(1);
-			tableViewContainer.cells()[2].secureTextFields()[0].setValue(passwordAccount1);
-			target.frontMostApp().keyboard().typeString("\n");
-			
-			target.delay(1);
-
-			//scroll up, to see the button if necessary
-			if(!tableViewContainer.cells()[3].isVisible()){
-				tableViewContainer.cells()[3].scrollToVisible();
-			}
+			insertValue(tableViewContainer.cells()[1].textFields()[0],userAccount1);
 
 			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 			
-			container = target.frontMostApp().mainWindow();
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
 
+			insertValue(tableViewContainer.cells()[2].textFields()[0],passwordAccount1);
+			
+			target.delay(1);
 
-			tableViewContainer.cells()[3].tap();
-
+			tapOnButton(tableViewContainer.cells()[3]);
 
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			target.pushTimeout(timeToPushTimeOut);
-			target.frontMostApp().mainWindow().activityIndicators()["In progress"].waitForInvalid() == true;
-			target.popTimeout();
+			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 			
 
 			////CHECK USING JASMINE METHOD
