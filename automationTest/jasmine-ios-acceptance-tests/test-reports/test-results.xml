@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="Owncloud.Login" errors="0" tests="19" failures="13" time="281.284" timestamp="2015-05-22T12:58:17">
-  <testcase classname="Owncloud.Login" name="login-portrait" time="27.642"></testcase>
-  <testcase classname="Owncloud.Login" name="login-landscape" time="19.126"></testcase>
-  <testcase classname="Owncloud.Login" name="login-landscape-rotate" time="25.947"></testcase>
-  <testcase classname="Owncloud.Login" name="login-portrait-rotate" time="27.642"></testcase>
-  <testcase classname="Owncloud.Login" name="loginSpecialCharacter-landscape-portrait" time="26.212"></testcase>
-  <testcase classname="Owncloud.Login" name="multiaccount-portrait" time="43.335"></testcase>
-  <testcase classname="Owncloud.Login" name="multiaccount-landscape" time="21.133"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[&quot;Manage Accounts&quot;] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 674)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="multiaccount-portrait-rotate" time="7.53"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 769)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="incorrectServer-portrait" time="6.678"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 921)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="incorrectServer-landscape-rotate" time="6.798"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 963)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="emptyPassword-landscape" time="7.641"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1014)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="emptyPassword-portrait" time="7.594"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1076)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="emptyPassword-portrait-rotate" time="7.598"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1140)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="incorrectPassword-landscape" time="6.794"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1207)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="incorrectPassword-portrait" time="6.802"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1274)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="incorrectPassword-portrait-rotate" time="6.587"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1342)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="existingAccount-portrait" time="7.643"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1423)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="existingAccount-landscape" time="7.546"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1561)</failure></testcase>
-  <testcase classname="Owncloud.Login" name="existingAccount-landscape-rotate" time="7.6"><failure>1: VerboseError: Cannot perform action on invalid element: UIAElementNil from target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0] in file:///Users/pgarcia/Documents/iOs/OC-code/ios/automationTest/jasmine-ios-acceptance-tests/D8E21D84-A318-4171-BC8F-8008990A6909/login.js (line 1701)</failure></testcase>
+<testsuite name="Owncloud.Login" errors="0" tests="19" failures="0" time="839.555" timestamp="2015-05-22T13:41:15">
+  <testcase classname="Owncloud.Login" name="login-portrait" time="27.609"></testcase>
+  <testcase classname="Owncloud.Login" name="login-landscape" time="18.893"></testcase>
+  <testcase classname="Owncloud.Login" name="login-landscape-rotate" time="27.224"></testcase>
+  <testcase classname="Owncloud.Login" name="login-portrait-rotate" time="22.469"></testcase>
+  <testcase classname="Owncloud.Login" name="loginSpecialCharacter-landscape-portrait" time="23.27"></testcase>
+  <testcase classname="Owncloud.Login" name="multiaccount-portrait" time="39.876"></testcase>
+  <testcase classname="Owncloud.Login" name="multiaccount-landscape" time="36.69"></testcase>
+  <testcase classname="Owncloud.Login" name="multiaccount-portrait-rotate" time="41.257"></testcase>
+  <testcase classname="Owncloud.Login" name="incorrectServer-portrait" time="186.082"></testcase>
+  <testcase classname="Owncloud.Login" name="incorrectServer-landscape-rotate" time="191.265"></testcase>
+  <testcase classname="Owncloud.Login" name="emptyPassword-landscape" time="15.258"></testcase>
+  <testcase classname="Owncloud.Login" name="emptyPassword-portrait" time="17.034"></testcase>
+  <testcase classname="Owncloud.Login" name="emptyPassword-portrait-rotate" time="20.729"></testcase>
+  <testcase classname="Owncloud.Login" name="incorrectPassword-landscape" time="16.758"></testcase>
+  <testcase classname="Owncloud.Login" name="incorrectPassword-portrait" time="20.345"></testcase>
+  <testcase classname="Owncloud.Login" name="incorrectPassword-portrait-rotate" time="20.101"></testcase>
+  <testcase classname="Owncloud.Login" name="existingAccount-portrait" time="39.586"></testcase>
+  <testcase classname="Owncloud.Login" name="existingAccount-landscape" time="36.589"></testcase>
+  <testcase classname="Owncloud.Login" name="existingAccount-landscape-rotate" time="38.489"></testcase>
 </testsuite>
 </testsuites>

@@ -17,14 +17,14 @@ describe("Owncloud.Login", function() {
 
 	}
 
-	logout =function(obj){
-		container = target.frontMostApp().mainWindow();
+	logout = function(obj){
+		target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].dragInsideWithOptions({startOffset:{x:0.7, y:0.25}, endOffset:{x:0, y:0.25}, duration:0.25});
+		target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].buttons()["Delete"].tap();
+	}
 
-		container.tabBar().buttons()["Settings"].tap();
-					
-		container.tableViews()[0].cells()[obj].dragInsideWithOptions({startOffset:{x:0.73, y:0.20}, endOffset:{x:0, y:0.20}, duration:0.25});
-			
-		container.tableViews()[0].cells()[obj].buttons()["Delete"].tap();
+	goToSettingsAndLogout =function(obj){
+		target.frontMostApp().mainWindow().tabBar().buttons()["Settings"].tap();
+		logout(obj);
 		target.delay(1);
 	}
 
@@ -157,7 +157,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			logout(idCellAccount1);
+			goToSettingsAndLogout(idCellAccount1);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -222,7 +222,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			logout(idCellAccount1);
+			goToSettingsAndLogout(idCellAccount1);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -301,7 +301,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			logout(idCellAccount1);
+			goToSettingsAndLogout(idCellAccount1);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -378,7 +378,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			logout(idCellAccount1);
+			goToSettingsAndLogout(idCellAccount1);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -455,7 +455,7 @@ describe("Owncloud.Login", function() {
 		if(target.frontMostApp().navigationBar().isValid()){
 			//if the test if passed, to restore the app as it was found
 			//Delete the account
-			logout(idCellAccount3);
+			goToSettingsAndLogout(idCellAccount3);
 			UIALogger.logPass(testName);
 		}else{
 			UIALogger.logFail(testName);
@@ -584,16 +584,13 @@ describe("Owncloud.Login", function() {
 			if(container.tableViews()[0].cells()[idCellAccount1].isValid() && container.tableViews()[0].cells()[idCellAccount2].isValid()){
 				//if the test if passed, to restore the app as it was found
 				//Delete the accounts
-				container.tableViews()[0].cells()[idCellAccount2].dragInsideWithOptions({startOffset:{x:0.73, y:0.20}, endOffset:{x:0, y:0.20}, duration:0.25});
-				container.tableViews()[0].cells()[idCellAccount2].buttons()["Delete"].tap();
+				logout(idCellAccount2);
 				target.delay(1);
 
 				//it's neccesary to tap anywhere, to delete after that the other account
 				container.tableViews()[0].tapWithOptions({tapOffset:{x:0.67, y:0.59}});
 
-				container.tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.3}, endOffset:{x:0.0, y:0.3}, duration:0.25});
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap()
-				
+				logout(idCellAccount1);
 				
 				target.delay(1);
 				UIALogger.logPass(testName);
@@ -671,8 +668,7 @@ describe("Owncloud.Login", function() {
 
 			//select to add a new account
 			container.tabBar().buttons()["Settings"].tap();
-			container.tableViews()[0].cells()["Manage Accounts"].tap();
-			container.tableViews()[0].cells()["Add new account"].tap();
+			container.tableViews()[0].cells()["Settings Add Account Cell"].tap();
 
 
 			tableViewContainer = getTableViewContainer(target);
@@ -721,26 +717,14 @@ describe("Owncloud.Login", function() {
 			if(container.tableViews()[0].cells()[idCellAccount1].isValid() && container.tableViews()[0].cells()[idCellAccount2].isValid()){
 				//if the test if passed, to restore the app as it was found
 				//Delete the accounts
-					
-				container.tableViews()[0].cells()[idCellAccount2].switches()["Delete "+idCellAccount2].setValue(true);
-				//container.tableViews()[0].cells()[idCellAccount2].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.2, y:0.2}, duration:0.25});
-				
-				
-				container.tableViews()[0].cells()[idCellAccount2].buttons()["Delete"].tap();
-				
+				logout(idCellAccount2);
 				target.delay(1);
 
 				//it's neccesary to tap anywhere, to delete after that the other account
 				container.tableViews()[0].tapWithOptions({tapOffset:{x:0.67, y:0.59}});
 
 				//delete the other account
-				container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-				//container.tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.2, y:0.2}, duration:0.25});
-				
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-				
-				
-				
+				logout(idCellAccount1);
 				target.delay(1);
 				UIALogger.logPass(testName);
 			}else{
@@ -818,8 +802,7 @@ describe("Owncloud.Login", function() {
 
 			//select to add a new account
 			container.tabBar().buttons()["Settings"].tap();
-			container.tableViews()[0].cells()["Manage Accounts"].tap();
-			container.tableViews()[0].cells()["Add new account"].tap();
+			container.tableViews()[0].cells()["Settings Add Account Cell"].tap();
 
 
 			//get the correct tableview, it depends on the device and the orientation
@@ -876,25 +859,14 @@ describe("Owncloud.Login", function() {
 			if(container.tableViews()[0].cells()[idCellAccount1].isValid() && container.tableViews()[0].cells()[idCellAccount2].isValid()){
 				//if the test if passed, to restore the app as it was found
 				//Delete the accounts
-						
-				container.tableViews()[0].cells()[idCellAccount2].switches()["Delete "+idCellAccount2].setValue(true);
-				//container.tableViews()[0].cells()[idCellAccount2].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.0, y:0.2}, duration:0.25});
-				
-				container.tableViews()[0].cells()[idCellAccount2].buttons()["Delete"].tap();
-				
+				logout(idCellAccount2);
 				target.delay(1);
 
 				//it's neccesary to tap anywhere, to delete after that the other account
 				container.tableViews()[0].tapWithOptions({tapOffset:{x:0.67, y:0.59}});
 
 				//delete the other account 
-				container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-				//container.tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.0, y:0.2}, duration:0.25});
-				
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-					
-				
-				
+				logout(idCellAccount1);
 				target.delay(1);
 				UIALogger.logPass(testName);
 			}else{
@@ -1470,8 +1442,7 @@ describe("Owncloud.Login", function() {
 
 			//select to add a new account
 			container.tabBar().buttons()["Settings"].tap();
-			container.tableViews()[0].cells()["Manage Accounts"].tap();
-			container.tableViews()[0].cells()["Add new account"].tap();
+			container.tableViews()[0].cells()["Settings Add Account Cell"].tap();
 
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
@@ -1523,16 +1494,9 @@ describe("Owncloud.Login", function() {
 				target.frontMostApp().navigationBar().leftButton().tap();
 				
 				
-					
-				container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-				//container.tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.0, y:0.2}, duration:0.25});
-				
-				
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-				
-				
-				
+				logout(idCellAccount1);	
 				target.delay(1);
+
 				UIALogger.logPass(testName);
 			}else{
 				UIALogger.logFail(testName);
@@ -1609,8 +1573,7 @@ describe("Owncloud.Login", function() {
 
 			//select to add a new account
 			container.tabBar().buttons()["Settings"].tap();
-			container.tableViews()[0].cells()["Manage Accounts"].tap();
-			container.tableViews()[0].cells()["Add new account"].tap();
+			container.tableViews()[0].cells()["Settings Add Account Cell"].tap();
 
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
@@ -1663,15 +1626,7 @@ describe("Owncloud.Login", function() {
 				target.frontMostApp().navigationBar().leftButton().tap();
 				target.delay(1);
 				
-				
-				
-				container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-				//container.tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.2, y:0.2}, duration:0.25});
-				
-				
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-				
-				
+				logout(idCellAccount1);	
 				
 				target.delay(1);
 				UIALogger.logPass(testName);
@@ -1748,8 +1703,7 @@ describe("Owncloud.Login", function() {
 
 			//select to add a new account
 			container.tabBar().buttons()["Settings"].tap();
-			container.tableViews()[0].cells()["Manage Accounts"].tap();
-			container.tableViews()[0].cells()["Add new account"].tap();
+			container.tableViews()[0].cells()["Settings Add Account Cell"].tap();
 
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
@@ -1812,14 +1766,7 @@ describe("Owncloud.Login", function() {
 				
 				target.delay(1);
 				
-						
-					
-				container.tableViews()[0].cells()[idCellAccount1].switches()["Delete "+idCellAccount1].setValue(true);
-				//container.tableViews()[0].cells()[idCellAccount1].dragInsideWithOptions({startOffset:{x:0.87, y:0.2}, endOffset:{x:0.0, y:0.2}, duration:0.25});
-
-				container.tableViews()[0].cells()[idCellAccount1].buttons()["Delete"].tap();
-				
-			
+				logout(idCellAccount1);	
 				target.delay(1);
 				UIALogger.logPass(testName);
 			}else{
