@@ -59,7 +59,7 @@ describe("Owncloud.Login", function() {
 		//target.popTimeout();
 
 		insertValue(container.cells()[1].textFields()[0], user);
-		insertValue(container.cells()[2].textFields()[0], password);
+		insertValue(container.cells()[2].secureTextFields()[0], password);
 
 		target.delay(1);
 
@@ -155,8 +155,7 @@ describe("Owncloud.Login", function() {
 
 
 	var incorrectServerAccount = "https://incorrect.owncloud.com/owncloud";
-	var incorrectpasswordAccount = "Incorrect password"; 
-
+	var incorrectpasswordAccount = "Incorrect password";  
 
 
 	var container;
@@ -287,7 +286,7 @@ describe("Owncloud.Login", function() {
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0], userAccount1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].textFields()[0], passwordAccount1);
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0], passwordAccount1);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 		target.delay(1);
@@ -340,7 +339,7 @@ describe("Owncloud.Login", function() {
 		
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].textFields()[0], passwordAccount3);
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0], passwordAccount3);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 		target.delay(1);
@@ -561,7 +560,7 @@ describe("Owncloud.Login", function() {
 
 			insertValue(tableViewContainer.cells()[1].textFields()[0],userAccount2);
 
-			insertValue(tableViewContainer.cells()[2].textFields()[0],passwordAccount2);
+			insertValue(tableViewContainer.cells()[2].secureTextFields()[0],passwordAccount2);
 
 			tapOnButton(tableViewContainer.cells()[3]);
 
@@ -758,7 +757,7 @@ describe("Owncloud.Login", function() {
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0], userAccount1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
 
-		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].textFields()[0], "");
+		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0], "");
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 
 		target.delay(1);
@@ -1082,7 +1081,7 @@ describe("Owncloud.Login", function() {
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
 
-			insertValue(tableViewContainer.cells()[2].textFields()[0],passwordAccount1);
+			insertValue(tableViewContainer.cells()[2].secureTextFields()[0],passwordAccount1);
 			
 			target.delay(1);
 
