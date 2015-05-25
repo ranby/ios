@@ -158,6 +158,7 @@ describe("Owncloud.Login", function() {
 	var incorrectpasswordAccount = "Incorrect password";  
 
 
+
 	var container;
 	var tableViewContainer;
 	var timeToPushTimeOut=180;
@@ -408,7 +409,7 @@ describe("Owncloud.Login", function() {
 			tableViewContainer = getTableViewContainer(target);
 
 
-			login(tableViewContainer,serverAccount2,userAccount2,passwordAccount2,3);
+			login(tableViewContainer,serverAccount2,userAccount2,passwordAccount2,"Add");
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
 			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
@@ -477,7 +478,7 @@ describe("Owncloud.Login", function() {
 
 			tableViewContainer = getTableViewContainer(target);
 
-			login(tableViewContainer,serverAccount2,userAccount2,passwordAccount2,3);
+			login(tableViewContainer,serverAccount2,userAccount2,passwordAccount2,"Add");
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
 			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
@@ -937,7 +938,7 @@ describe("Owncloud.Login", function() {
 			tableViewContainer = getTableViewContainer(target);
 
 			//log in with the same account
-			login(tableViewContainer,serverAccount1,userAccount1,passwordAccount1,3);
+			login(tableViewContainer,serverAccount1,userAccount1,passwordAccount1,"Add");
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
 			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
@@ -1003,7 +1004,7 @@ describe("Owncloud.Login", function() {
 			tableViewContainer = getTableViewContainer(target);
 
 			//log in with the same account
-			login(tableViewContainer,serverAccount1,userAccount1,passwordAccount1,3);
+			login(tableViewContainer,serverAccount1,userAccount1,passwordAccount1,"Add");
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
 			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
