@@ -175,7 +175,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
@@ -206,7 +206,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
@@ -239,13 +239,16 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
 		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
@@ -275,31 +278,33 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 
 		//log in with account1
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], serverAccount1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		waitUntilMessageIsShown(target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"]);
 
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0], userAccount1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0], passwordAccount1);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-
-		target.delay(1);
+		target.delay(2);
 
 		tapOnButton(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"]);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
 		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
@@ -328,10 +333,11 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], serverAccount3);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		waitUntilMessageIsShown(target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"]);
@@ -339,19 +345,19 @@ describe("Owncloud.Login", function() {
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0], userAccount3);
 		
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0], passwordAccount3);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-
-
-		target.delay(1);
+		target.delay(2);
 
 		tapOnButton(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"]);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
 		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
@@ -377,14 +383,14 @@ describe("Owncloud.Login", function() {
 	///////////////////////////////////
 	//Case to test
 	it("multiaccount-portrait", function() {
-		testName = "Login - Multiaccount - portrait - rotate";
+		testName = "Login - Multiaccount - portrait";
 		//test start
 		UIALogger.logStart(testName);
 
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
@@ -451,7 +457,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
@@ -481,7 +487,7 @@ describe("Owncloud.Login", function() {
 			login(tableViewContainer,serverAccount2,userAccount2,passwordAccount2,"Add");
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
+			waitUntilMessageIsGone(container.activityIndicators()["In progress"]);
 
 			////CHECK USING JASMINE METHOD
 			expect(container.tableViews()[0].cells()[idCellAccount1].isValid() && container.tableViews()[0].cells()[idCellAccount2].isValid()).toBeTruthy();
@@ -519,7 +525,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
@@ -534,6 +540,7 @@ describe("Owncloud.Login", function() {
 		//if it's possible to login with the first account, the test keep on running
 			
 			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+			target.delay(2);
 			
 			container = target.frontMostApp().mainWindow();
 
@@ -544,7 +551,6 @@ describe("Owncloud.Login", function() {
 			container.tabBar().buttons()["Settings"].tap();
 			container.tableViews()[0].cells()["Settings Add Account Cell"].tap();
 
-
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
 
@@ -552,9 +558,11 @@ describe("Owncloud.Login", function() {
 			insertValue(tableViewContainer.cells()[0].textFields()[0],serverAccount2);
 
 			//It waits x seconds or until the connections is established, to continue the test.
-			waitUntilMessageIsShown(container.groups()["Connection Established"]);
+			waitUntilMessageIsShown(tableViewContainer.groups()["Connection Established"]);
 
+			//REVIEW
 			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+			target.delay(2);
 			
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
@@ -563,10 +571,10 @@ describe("Owncloud.Login", function() {
 
 			insertValue(tableViewContainer.cells()[2].secureTextFields()[0],passwordAccount2);
 
-			tapOnButton(tableViewContainer.cells()[3]);
+			tapOnButton(tableViewContainer.cells()["Add"]);
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
+			waitUntilMessageIsGone(container.activityIndicators()["In progress"]);
 
 
 			////CHECK USING JASMINE METHOD
@@ -605,6 +613,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 
 		//log in with the incorrect server
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], incorrectServerAccount);
@@ -638,6 +647,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 
 
 		//log in with the incorrect server
@@ -648,8 +658,9 @@ describe("Owncloud.Login", function() {
 		waitUntilMessageIsNotVisible(target.frontMostApp().mainWindow().tableViews()[0].groups()["In progress"]);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 
 
 		////CHECK USING JASMINE METHOD
@@ -680,7 +691,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,"","Log in");
 
@@ -712,7 +723,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,"","Log in");
 
@@ -745,23 +756,24 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 
 		//log in with account1
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0], serverAccount1);
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 
 		//It waits x seconds or until the connections is established, to continue the test.
 		waitUntilMessageIsShown(target.frontMostApp().mainWindow().tableViews()[0].groups()["Connection Established"]);
 
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0], userAccount1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 
 		insertValue(target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0], "");
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-
-		target.delay(1);
+		target.delay(2);
 
 		tapOnButton(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"]);
 
@@ -794,9 +806,10 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 
 		
-		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,incorrectpasswordAccount,"","Log in");
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,incorrectpasswordAccount,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
 		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
@@ -830,8 +843,9 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 
-		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,incorrectpasswordAccount,"","Log in");
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,incorrectpasswordAccount,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
 		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
@@ -865,18 +879,20 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+		target.delay(2);
 
-		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,incorrectpasswordAccount,"","Log in");
+		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,incorrectpasswordAccount,"Log in");
 
 		//It waits x seconds or until the loading disappear, to continue the test. 
 		waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
 
 
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
+		target.delay(2);
 
 		////CHECK USING JASMINE METHOD
 		expect(target.frontMostApp().mainWindow().tableViews()[0].groups()["The user or password is incorrect"].isValid()).toBeTruthy();
@@ -911,7 +927,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
-		target.delay(1);
+		target.delay(2);
 
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
@@ -941,7 +957,7 @@ describe("Owncloud.Login", function() {
 			login(tableViewContainer,serverAccount1,userAccount1,passwordAccount1,"Add");
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
+			waitUntilMessageIsGone(container.activityIndicators()["In progress"]);
 
 			////CHECK USING JASMINE METHOD
 			expect(target.frontMostApp().alert().name()).toEqual("The entered user already exists");
@@ -976,7 +992,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
@@ -1007,7 +1023,7 @@ describe("Owncloud.Login", function() {
 			login(tableViewContainer,serverAccount1,userAccount1,passwordAccount1,"Add");
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
+			waitUntilMessageIsGone(container.activityIndicators()["In progress"]);
 
 
 			////CHECK USING JASMINE METHOD
@@ -1042,7 +1058,7 @@ describe("Owncloud.Login", function() {
 		//iOs6 device need to wait a second to change the orietation
 		target.delay(1);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
-		target.delay(1);
+		target.delay(2);
 
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
@@ -1073,11 +1089,12 @@ describe("Owncloud.Login", function() {
 			insertValue(tableViewContainer.cells()[0].textFields()[0],serverAccount1);
 
 			//It waits x seconds or until the connections is established, to continue the test.
-			waitUntilMessageIsShown(container.groups()["Connection Established"]);
+			waitUntilMessageIsShown(tableViewContainer.groups()["Connection Established"]);
 
 			insertValue(tableViewContainer.cells()[1].textFields()[0],userAccount1);
 
 			target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
+			target.delay(2);
 			
 			//get the correct tableview, it depends on the device and the orientation
 			tableViewContainer = getTableViewContainer(target);
@@ -1086,11 +1103,11 @@ describe("Owncloud.Login", function() {
 			
 			target.delay(1);
 
-			tapOnButton(tableViewContainer.cells()[3]);
+			tapOnButton(tableViewContainer.cells()["Add"]);
 
 
 			//It waits x seconds or until the loading disappear, to continue the test. 
-			waitUntilMessageIsGone(target.frontMostApp().mainWindow().activityIndicators()["In progress"]);
+			waitUntilMessageIsGone(container.activityIndicators()["In progress"]);
 			
 
 			////CHECK USING JASMINE METHOD
