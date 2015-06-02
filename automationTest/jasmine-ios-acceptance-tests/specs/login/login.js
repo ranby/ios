@@ -19,7 +19,8 @@ describe("Owncloud.Login", function() {
 
 
 	logout = function(obj){
-		target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].dragInsideWithOptions({startOffset:{x:0.7, y:0.25}, endOffset:{x:0, y:0.25}, duration:0.25});
+		//target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].dragInsideWithOptions({startOffset:{x:0.7, y:0.25}, endOffset:{x:0, y:0.25}, duration:0.25});
+		target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].dragInsideWithOptions({startOffset:{x:0.75, y:0.5}, endOffset:{x:0.25, y:0.5}, duration:0.25});
 		target.frontMostApp().mainWindow().tableViews()[0].cells()[obj].buttons()["Delete"].tap();
 	}
 
@@ -130,7 +131,7 @@ describe("Owncloud.Login", function() {
 	var target = UIATarget.localTarget();
 
 	var testName;
-
+	
 	//account1
 	var serverAccount1 = "owncloudServerVar"; 
 	var userAccount1 = "owncloudUserVar"; 
@@ -156,7 +157,6 @@ describe("Owncloud.Login", function() {
 
 	var incorrectServerAccount = "https://incorrect.owncloud.com/owncloud";
 	var incorrectpasswordAccount = "Incorrect password";  
-
 
 
 	var container;
@@ -243,6 +243,7 @@ describe("Owncloud.Login", function() {
 
 		login(target.frontMostApp().mainWindow().tableViews()[0],serverAccount1,userAccount1,passwordAccount1,"Log in");
 
+		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_LANDSCAPERIGHT);
 		target.delay(2);
 		target.setDeviceOrientation(UIA_DEVICE_ORIENTATION_PORTRAIT);
@@ -703,7 +704,9 @@ describe("Owncloud.Login", function() {
 		if(!(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isEnabled())){
 			//if the test if passed, to restore the app as it was found
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
+			target.delay(1);
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
+			target.delay(1);
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
 
 			target.delay(1);
@@ -734,7 +737,9 @@ describe("Owncloud.Login", function() {
 		if(!(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isEnabled())){
 			//if the test if passed, to restore the app as it was found
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
+			target.delay(1);
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
+			target.delay(1);
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
 			
 			
@@ -784,7 +789,9 @@ describe("Owncloud.Login", function() {
 		if(!(target.frontMostApp().mainWindow().tableViews()[0].cells()["Log in"].isEnabled())){
 			//if the test if passed, to restore the app as it was found
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
+			target.delay(1);
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
+			target.delay(1);
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
 			
 			target.delay(1);
@@ -822,7 +829,9 @@ describe("Owncloud.Login", function() {
 			//if the test if passed, to restore the app as it was found
 			//Set field as empty
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[0].textFields()[0].setValue("");
+			target.delay(1);
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[1].textFields()[0].setValue("");
+			target.delay(1);
 			target.frontMostApp().mainWindow().tableViews()[0].cells()[2].secureTextFields()[0].setValue("");
 			
 			
