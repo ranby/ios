@@ -132,7 +132,7 @@ describe("Owncloud.Login", function() {
 
 	var testName;
 	
-	//account1
+	 //account1
 	var serverAccount1 = "owncloudServerVar"; 
 	var userAccount1 = "owncloudUserVar"; 
 	var passwordAccount1 = "owncloudPasswordVar"; 
@@ -431,9 +431,6 @@ describe("Owncloud.Login", function() {
 				logout(idCellAccount2);
 				target.delay(1);
 
-				//it's neccesary to tap anywhere, to delete after that the other account
-				container.tableViews()[0].tapWithOptions({tapOffset:{x:0.67, y:0.59}});
-
 				logout(idCellAccount1);
 				
 				target.delay(1);
@@ -499,9 +496,6 @@ describe("Owncloud.Login", function() {
 				//Delete the accounts
 				logout(idCellAccount2);
 				target.delay(1);
-
-				//it's neccesary to tap anywhere, to delete after that the other account
-				container.tableViews()[0].tapWithOptions({tapOffset:{x:0.67, y:0.59}});
 
 				//delete the other account
 				logout(idCellAccount1);
@@ -587,9 +581,6 @@ describe("Owncloud.Login", function() {
 				//Delete the accounts
 				logout(idCellAccount2);
 				target.delay(1);
-
-				//it's neccesary to tap anywhere, to delete after that the other account
-				container.tableViews()[0].tapWithOptions({tapOffset:{x:0.67, y:0.59}});
 
 				//delete the other account 
 				logout(idCellAccount1);
