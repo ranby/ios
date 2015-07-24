@@ -162,7 +162,7 @@
     
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:249/255.0f green:239/255.0f blue:226/255.0f alpha:1.0];
     
     //We set the currentLocalFolder when the folder is not the root
     if(_fileIdToShowFiles.idFile != 0) {
@@ -1368,6 +1368,8 @@
         //Set the table footer
         [self setTheLabelOnTheTableFooter];
     }
+    [cell setBackgroundColor:[UIColor colorWithRed:249/255.0f green:239/255.0f blue:226/255.0f alpha:1.0]];
+    
     return cell;
 }
 

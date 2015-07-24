@@ -955,6 +955,8 @@
     
     [self setTheLabelOnTheTableFooter];
     
+    [cell setBackgroundColor:[UIColor colorWithRed:249/255.0f green:239/255.0f blue:226/255.0f alpha:1.0]];
+    
     return cell;
 }
 

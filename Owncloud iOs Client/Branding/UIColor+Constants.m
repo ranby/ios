@@ -21,36 +21,36 @@
 
 //Tint color of navigation bar
 + (UIColor*)colorOfNavigationBar{
-    return [UIColor colorWithRed:28/255.0f green:44/255.0f blue:67/255.0f alpha:1.0];
+    return [UIColor blackColor];
 }
 //Color of background view in navigation bar, only for iOS 7 for transparency
 + (UIColor*)colorOfBackgroundNavBarImage {
-    return [UIColor colorWithRed:28/255.0f green:44/255.0f blue:67/255.0f alpha:0.7];
+    return [UIColor blackColor];
 }
 
 //Color of letters in navigation bar
 + (UIColor*)colorOfNavigationTitle{
-    return [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0];
+    return [UIColor colorWithRed:249/255.0f green:172/255.0f blue:63/255.0f alpha:1.0];
 }
 
 //Color of items in navigation bar
 + (UIColor*)colorOfNavigationItems{
-    return [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0];
+    return [UIColor colorWithRed:249/255.0f green:172/255.0f blue:63/255.0f alpha:1.0];
 }
 
 //Color of background in custom status bar, only for iOS 7
 + (UIColor*)colorOfBackgroundStatusBarNotification {
-    return [UIColor colorWithRed:55/255.0f green:70/255.0f blue:89/255.0f alpha:1.0];
+    return [UIColor blackColor];
 }
 
 //Tint color of tool bar
 + (UIColor*)colorOfToolBar{
-    return [UIColor colorWithRed:28/255.0f green:44/255.0f blue:67/255.0f alpha:1.0];
+    return [UIColor blackColor];
 }
 
 //Color of background view in toolBar bar, only for iOS 7 for transparency
 + (UIColor*)colorOfBackgroundToolBarImage {
-    return [UIColor colorWithRed:28/255.0f green:44/255.0f blue:67/255.0f alpha:0.7];
+    return [UIColor blackColor];
 }
 
 //Tint color of tool bar buttons
@@ -64,12 +64,12 @@
 
 //Tint color of tab bar
 + (UIColor*)colorOfTintUITabBar {
-    return [UIColor colorWithRed:28/255.0f green:44/255.0f blue:67/255.0f alpha:1.0];
+    return [UIColor blackColor];
 }
 
 //Tint color for selected tab bar item
 + (UIColor*)colorOfTintSelectedUITabBar {
-    return [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0];
+    return [UIColor colorWithRed:249/255.0f green:172/255.0f blue:63/255.0f alpha:1.0];
 }
 
 //Tint color for non selected tab bar item (only works with the labels)
@@ -87,7 +87,7 @@
 
 //Cell background color in some cells of settings view
 +(UIColor*)colorOfBackgroundButtonOnList {
-    return [UIColor whiteColor];
+    return [UIColor colorWithRed:59/255.0f green:169/255.0f blue:185/255.0f alpha:1.0];
 }
 
 //Text color in some cells of settings view
@@ -100,7 +100,7 @@
 
 //Background color of login view
 + (UIColor*)colorOfLoginBackground{
-    return [UIColor colorWithRed:245/255.0f green:245/255.0f blue:241/255.0f alpha:1.0];
+    return [UIColor colorWithRed:249/255.0f green:239/255.0f blue:226/255.0f alpha:1.0];
 }
 
 //Text color of url in login view
@@ -126,12 +126,12 @@
 
 //Background color of top of login view, in logo image view
 + (UIColor*)colorOfLoginTopBackground {
-    return [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1];
+    return [UIColor colorWithRed:249/255.0f green:239/255.0f blue:226/255.0f alpha:1.0];
 }
 
 //Background color of login button
 +(UIColor *)colorOfLoginButtonBackground{
-    return [UIColor colorWithRed:96/255.0f green:133/255.0f blue:154/255.0f alpha:1.0];
+    return [UIColor colorWithRed:59/255.0f green:169/255.0f blue:185/255.0f alpha:1.0];
 }
 
 //Text color of the text of the login button
