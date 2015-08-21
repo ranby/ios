@@ -13,6 +13,8 @@
  */
 
 #import "AppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 #import "FilesViewController.h"
 #import "SettingsViewController.h"
 #import "RecentViewController.h"
@@ -93,6 +95,7 @@ NSString * NotReachableNetworkForDownloadsNotification = @"NotReachableNetworkFo
 @synthesize isLoadingVisible = _isLoadingVisible;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Fabric with:@[CrashlyticsKit]];
     //init
     DLog(@"Init");
     

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036F3A521B86039B0058573D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A501B86039B0058573D /* Fabric.framework */; };
+		036F3A531B86039B0058573D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A501B86039B0058573D /* Fabric.framework */; };
+		036F3A541B86039B0058573D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A501B86039B0058573D /* Fabric.framework */; };
+		036F3A551B86039B0058573D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A501B86039B0058573D /* Fabric.framework */; };
+		036F3A561B86039B0058573D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A511B86039B0058573D /* Crashlytics.framework */; };
+		036F3A571B86039B0058573D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A511B86039B0058573D /* Crashlytics.framework */; };
+		036F3A581B86039B0058573D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A511B86039B0058573D /* Crashlytics.framework */; };
+		036F3A591B86039B0058573D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A511B86039B0058573D /* Crashlytics.framework */; };
 		1324297D15ADBB3700DF823E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1324297C15ADBB3700DF823E /* UIKit.framework */; };
 		1324297F15ADBB3700DF823E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1324297E15ADBB3700DF823E /* Foundation.framework */; };
 		1324298115ADBB3700DF823E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1324298015ADBB3700DF823E /* CoreGraphics.framework */; };
@@ -918,6 +926,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		036F3A501B86039B0058573D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		036F3A511B86039B0058573D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		1324297815ADBB3700DF823E /* Owncloud iOs Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Owncloud iOs Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1324297C15ADBB3700DF823E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1324297E15ADBB3700DF823E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1647,6 +1657,7 @@
 				EAC3AC4615ED2BD100B59805 /* libz.dylib in Frameworks */,
 				EAC3AC4015ED2B4E00B59805 /* MobileCoreServices.framework in Frameworks */,
 				137E488B15B7012900628EB1 /* CFNetwork.framework in Frameworks */,
+				036F3A521B86039B0058573D /* Fabric.framework in Frameworks */,
 				1380804F15D5038000B281F4 /* QuartzCore.framework in Frameworks */,
 				137F3B4215B936420009BB24 /* AssetsLibrary.framework in Frameworks */,
 				137F3B4115B935490009BB24 /* MediaPlayer.framework in Frameworks */,
@@ -1656,6 +1667,7 @@
 				137F3B4315B936510009BB24 /* SystemConfiguration.framework in Frameworks */,
 				1324297D15ADBB3700DF823E /* UIKit.framework in Frameworks */,
 				1324297F15ADBB3700DF823E /* Foundation.framework in Frameworks */,
+				036F3A561B86039B0058573D /* Crashlytics.framework in Frameworks */,
 				1324298115ADBB3700DF823E /* CoreGraphics.framework in Frameworks */,
 				13824C0A16034C2200A95EAD /* libcrypto.a in Frameworks */,
 				13824C0B16034C2200A95EAD /* libssl.a in Frameworks */,
@@ -1676,8 +1688,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC6E5F51AB0912200CCF8C4 /* libcrypto.a in Frameworks */,
+				036F3A551B86039B0058573D /* Fabric.framework in Frameworks */,
 				EAC6E5F41AB0911600CCF8C4 /* libssl.a in Frameworks */,
 				EAF7217A1AAF1B33009F5596 /* libsqlite3.0.dylib in Frameworks */,
+				036F3A591B86039B0058573D /* Crashlytics.framework in Frameworks */,
 				EAF721791AAF1AEF009F5596 /* libownCloudiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1691,6 +1705,8 @@
 				59D700FC1A122BB6006DB0B7 /* MobileCoreServices.framework in Frameworks */,
 				599D99F41A025733008A9DB3 /* libsqlite3.0.dylib in Frameworks */,
 				597A87981A0143000071F2AF /* libownCloudiOS.a in Frameworks */,
+				036F3A531B86039B0058573D /* Fabric.framework in Frameworks */,
+				036F3A571B86039B0058573D /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1703,6 +1719,8 @@
 				59E58B761B04ED15004E9739 /* libssl.a in Frameworks */,
 				EA1F62DD1A5EC08300D6346F /* libownCloudiOS.a in Frameworks */,
 				EA1F62D61A5EBDF900D6346F /* libsqlite3.0.dylib in Frameworks */,
+				036F3A541B86039B0058573D /* Fabric.framework in Frameworks */,
+				036F3A581B86039B0058573D /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1722,6 +1740,8 @@
 		1324296D15ADBB3700DF823E = {
 			isa = PBXGroup;
 			children = (
+				036F3A501B86039B0058573D /* Fabric.framework */,
+				036F3A511B86039B0058573D /* Crashlytics.framework */,
 				EA8667DB18AA291C00D3550D /* ownCloud iOS library.xcodeproj */,
 				1324298215ADBB3700DF823E /* Owncloud iOs Client */,
 				132429B415ADBB3800DF823E /* Owncloud iOs ClientTests */,
@@ -3331,6 +3351,7 @@
 				1324297515ADBB3700DF823E /* Frameworks */,
 				1324297615ADBB3700DF823E /* Resources */,
 				EAB0AB5919ED356A00764C31 /* Embed App Extensions */,
+				036F3A4E1B8603080058573D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -4053,6 +4074,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		036F3A4E1B8603080058573D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run b7d49a2adf6f77aed17c5d4168ae1718dc4f560f 1ef61d9c60db88b8b5652d10129952848332456a3b356158c91dcc04d254a1c0";
+		};
 		132429AB15ADBB3800DF823E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4587,6 +4621,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
@@ -4635,6 +4670,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
@@ -4702,6 +4738,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -4747,6 +4787,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "SHARE_IN=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -4797,6 +4841,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4857,6 +4902,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "FILE_PICKER=1";
@@ -4908,6 +4954,10 @@
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -4962,6 +5012,10 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "Owncloud iOs Client/Owncloud iOs Client-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
