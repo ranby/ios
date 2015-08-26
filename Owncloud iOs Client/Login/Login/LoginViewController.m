@@ -91,6 +91,8 @@ NSString *loginViewControllerRotate = @"loginViewControllerRotate";
     [self configureViewForInterfacePosition];
     [self internazionaliceTheInitialInterface];
     
+    //[self fillServerUrlField];
+    
     isLoginButtonEnabled = NO;
     
     //Keyboard hidding after write url, name and password
@@ -920,13 +922,23 @@ NSString *loginViewControllerRotate = @"loginViewControllerRotate";
     self.urlTextField.textColor = [UIColor colorOfURLUserPassword];
     self.urlTextField.placeholder = NSLocalizedString(@"url_sample", nil);
     
+    
     if(!urlEditable) {
         [self.urlTextField setEnabled:NO];
     }
     
     DLog(@"2- self.auxUrlForReloadTable: %@", self.auxUrlForReloadTable);
     
-    self.urlTextField.text = self.auxUrlForReloadTable;
+    if ([self.auxUrlForReloadTable isEqualToString:@""]) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"Owncloud iOs Client-Info" ofType:@"plist"];
+        NSDictionary *mainDictionary = [NSDictionary dictionaryWithContentsOfFile:path];
+        NSString *serverUrl = [mainDictionary objectForKey:@"Server URL"];
+        self.urlTextField.text = serverUrl;
+    }
+    else {
+        self.urlTextField.text = self.auxUrlForReloadTable;
+    }
+    
     
     refreshTestServerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     

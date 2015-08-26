@@ -15,6 +15,7 @@
 		036F3A571B86039B0058573D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A511B86039B0058573D /* Crashlytics.framework */; };
 		036F3A581B86039B0058573D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A511B86039B0058573D /* Crashlytics.framework */; };
 		036F3A591B86039B0058573D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F3A511B86039B0058573D /* Crashlytics.framework */; };
+		03768BB01B8DA82D0071C50F /* Owncloud iOs Client-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1324298415ADBB3700DF823E /* Owncloud iOs Client-Info.plist */; };
 		1324297D15ADBB3700DF823E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1324297C15ADBB3700DF823E /* UIKit.framework */; };
 		1324297F15ADBB3700DF823E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1324297E15ADBB3700DF823E /* Foundation.framework */; };
 		1324298115ADBB3700DF823E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1324298015ADBB3700DF823E /* CoreGraphics.framework */; };
@@ -3568,6 +3569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03768BB01B8DA82D0071C50F /* Owncloud iOs Client-Info.plist in Resources */,
 				59DA496619F7A4B600DD3619 /* Owncloud iOs Client.entitlements in Resources */,
 				14A4796A18EC6FDF003500BA /* FileFavoriteIcon.png in Resources */,
 				137E485E15B6A3A400628EB1 /* DB.sqlite in Resources */,
