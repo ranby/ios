@@ -16,8 +16,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PassthroughView.h"
+#import "KKPasscodeViewController.h"
 
-@interface OCTabBarController : UITabBarController{
+@interface OCTabBarController : UITabBarController <KKPasscodeViewControllerDelegate> {
     
     PassthroughView *_backgroundView;
 }

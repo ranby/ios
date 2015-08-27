@@ -688,6 +688,8 @@
             //Add accesibility label for Automation
             self.switchPasscode.accessibilityLabel = ACS_SETTINGS_PASSCODE_SWITCH;
             
+            self.switchPasscode.enabled = NO;
+            
             break;
             
         default:

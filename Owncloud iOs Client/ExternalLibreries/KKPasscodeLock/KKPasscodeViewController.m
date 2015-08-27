@@ -214,7 +214,7 @@
 		
 		_setPasscodeTableView.tableHeaderView = [self headerViewForTextField:_setPasscodeTextField];
         
-		[_tableViews addObject:_setPasscodeTableView];
+        [_tableViews addObject:_setPasscodeTableView];
 		[_textFields addObject:_setPasscodeTextField];
 		[_boxes addObject:[self boxes]];
 		UIView *boxesView = [[UIView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - totalBoxesWidth) * 0.5, 0, totalBoxesWidth, kPasscodeBoxHeight)];

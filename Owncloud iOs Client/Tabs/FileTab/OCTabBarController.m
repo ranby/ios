@@ -18,6 +18,8 @@
 #import "Customization.h"
 #import "UIColor+Constants.h"
 #import "ImageUtils.h"
+#import "OCPortraitNavigationViewController.h"
+#import "ManageAppSettingsDB.h"
 
 
 @interface OCTabBarController ()
@@ -60,6 +62,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if(![ManageAppSettingsDB isPasscode]) {
+        //Create pass code view controller
+        KKPasscodeViewController *vc = [[KKPasscodeViewController alloc] initWithNibName:nil bundle:nil];
+        vc.delegate = self;
+        vc.mode = KKPasscodeModeSet;
+        
+        //Create the navigation bar of portrait
+        OCPortraitNavigationViewController *oc = [[OCPortraitNavigationViewController alloc]initWithRootViewController:vc];
+        
+        [self presentViewController:oc animated:YES completion:nil];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
